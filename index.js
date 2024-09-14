@@ -3,11 +3,15 @@ const { createServer } = require('node:http');
 const { join } = require('node:path');
 const { Server } = require('socket.io');
 const cors = require('cors');
-
+require('dotenv').config();
+const dbConnection = require("./database")
 // const userRoute = require("./routes/userRoute");
+
 const app = express();
 app.use(cors())
 
+
+dbConnection();
 // app.use("/api/v1/user",userRoute)
 const server = createServer(app);
 const io = new Server(server);
